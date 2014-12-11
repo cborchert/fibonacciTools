@@ -1,3 +1,4 @@
+//A recursive function to determine the nth fibonacci number
 function fibonacci(term){
     if(term < 3){
         return 1;
@@ -7,6 +8,7 @@ function fibonacci(term){
     }
 }
 
+//A function to determine the nth fibonacci number
 function fibonacci_smart(term){
     var horizon = Math.pow(2,53)
     alert("horizon set at:" + horizon);
@@ -26,6 +28,7 @@ function fibonacci_smart(term){
 
 }
 
+//A function to determine and return the nth fibonacci number using bigInt
 function fibonacci_bigInt(term){
     var horizon = Math.pow(2,53)
     var current = "0";
@@ -41,6 +44,7 @@ function fibonacci_bigInt(term){
     return current;
 }
 
+//returns the first n fibonacci numbers as an array
 function fibonacci_toArray_bigInt(term){
    var current = "0";
     var last = "0";
@@ -57,22 +61,17 @@ function fibonacci_toArray_bigInt(term){
     return sequence;
 }
 
+//returns an array mod d
 function modArray(array, divisor){
     var moduli = Array();
     array.forEach( function (element, index){
-//        console.log(array);
-//        console.log(divisor);
-//        console.log(moduli);
-//        console.log(bigInt(element).toString());
-//        console.log(bigInt(divisor).toString());
-//        console.log(bigInt(element).divmod(divisor)["remainder"].toString());
         moduli.push(bigInt(element).divmod(divisor)["remainder"].toString());
     });
 
     return moduli;
 }
 
-//Searches the Fibonacci sequence for multiples of the factor, but not past the nth fibonacci term
+//Searches the Fibonacci sequence for multiples of the factor, and returns the least multiple but not past the nth fibonacci term
 function search_fib_mult(factor, n){
     n = typeof n !== 'undefined' ?  n : 1000;
     var match = false;
@@ -84,11 +83,11 @@ function search_fib_mult(factor, n){
         if(term%factor === 0){
            match = true;
         }
-        //console.log(factor + " " + term + " " + match);
     }
     return i;
 }
 
+//returns the length of the given remainder sequence
 function lengthOfModSequence(divisor, searchLength){
     searchLength = typeof searchLength !== 'undefined' ?  searchLength : 1000;
     var n = search_fib_mult(divisor, searchLength);
@@ -109,6 +108,7 @@ function lengthOfModSequence(divisor, searchLength){
     return false;
 }
 
+//tests our prediction
 function testPrediction(searchLength){
     searchLength = typeof searchLength !== 'undefined' ?  searchLength : 1000;
     for(var i=1; i<=searchLength; i++){
